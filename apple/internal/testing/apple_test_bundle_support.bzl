@@ -373,6 +373,7 @@ def _apple_test_bundle_impl(ctx, extra_providers = []):
             targets_to_avoid = targets_to_avoid,
             top_level_attrs = ["resources"],
             version_keys_required = False,
+            requested_features = ctx.features,
         ),
         partials.swift_dylibs_partial(
             actions = actions,

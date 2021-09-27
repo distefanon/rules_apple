@@ -290,7 +290,8 @@ def _resources_partial_impl(
         rule_label,
         targets_to_avoid,
         top_level_attrs,
-        version_keys_required):
+        version_keys_required,
+        requested_features):
     """Implementation for the resource processing partial."""
     providers = []
     for attr in ["deps", "resources"]:
@@ -428,6 +429,7 @@ def _resources_partial_impl(
                 "platform_prerequisites": platform_prerequisites,
                 "product_type": rule_descriptor.product_type,
                 "rule_label": rule_label,
+                "requested_features": requested_features,
             }
 
             # Only pass the Swift module name if the type of resource to process
@@ -511,7 +513,8 @@ def resources_partial(
         rule_label,
         targets_to_avoid = [],
         top_level_attrs = [],
-        version_keys_required = True):
+        version_keys_required = True,
+        requested_features):
     """Constructor for the resources processing partial.
 
     This partial collects and propagates all resources that should be bundled in the target being
@@ -569,4 +572,5 @@ def resources_partial(
         targets_to_avoid = targets_to_avoid,
         top_level_attrs = top_level_attrs,
         version_keys_required = version_keys_required,
+        requested_features = requested_features,
     )

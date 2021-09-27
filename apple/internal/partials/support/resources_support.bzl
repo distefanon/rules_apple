@@ -141,6 +141,7 @@ def _asset_catalogs(
         platform_prerequisites,
         product_type,
         rule_label,
+        requested_features,
         **kwargs):
     """Processes asset catalog files."""
 
@@ -201,6 +202,7 @@ def _asset_catalogs(
         resolved_alticonstool = apple_toolchain_info.resolved_alticonstool,
         resolved_xctoolrunner = apple_toolchain_info.resolved_xctoolrunner,
         rule_label = rule_label,
+        requested_features = requested_features,
     )
 
     return struct(

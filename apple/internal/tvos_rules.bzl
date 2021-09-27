@@ -211,6 +211,7 @@ def _tvos_application_impl(ctx):
             rule_label = label,
             targets_to_avoid = ctx.attr.frameworks,
             top_level_attrs = top_level_attrs,
+            requested_features = ctx.features,
         ),
         partials.settings_bundle_partial(
             actions = actions,
@@ -437,6 +438,7 @@ def _tvos_dynamic_framework_impl(ctx):
             targets_to_avoid = ctx.attr.frameworks,
             top_level_attrs = ["resources"],
             version_keys_required = False,
+            requested_features = ctx.features,
         ),
         partials.swift_dylibs_partial(
             actions = actions,
@@ -625,6 +627,7 @@ def _tvos_framework_impl(ctx):
             targets_to_avoid = ctx.attr.frameworks,
             top_level_attrs = ["resources"],
             version_keys_required = False,
+            requested_features = ctx.features,
         ),
         partials.swift_dylibs_partial(
             actions = actions,
@@ -781,6 +784,7 @@ def _tvos_extension_impl(ctx):
             rule_label = label,
             targets_to_avoid = ctx.attr.frameworks,
             top_level_attrs = top_level_attrs,
+            requested_features = ctx.features,
         ),
         partials.swift_dylibs_partial(
             actions = actions,
@@ -913,6 +917,7 @@ def _tvos_static_framework_impl(ctx):
             rule_attrs = ctx.attr,
             rule_descriptor = rule_descriptor,
             rule_label = label,
+            requested_features = ctx.features,
         ))
 
     processor_result = processor.process(
