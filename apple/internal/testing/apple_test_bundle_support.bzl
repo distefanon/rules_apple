@@ -314,6 +314,7 @@ def _apple_test_bundle_impl(ctx, extra_providers = []):
             platform_prerequisites = platform_prerequisites,
             predeclared_outputs = predeclared_outputs,
             product_type = rule_descriptor.product_type,
+            rule_descriptor = rule_descriptor,
         ),
         partials.binary_partial(
             actions = actions,
@@ -417,6 +418,8 @@ def _apple_test_bundle_impl(ctx, extra_providers = []):
         bundle_name = bundle_name,
         platform_prerequisites = platform_prerequisites,
         predeclared_outputs = predeclared_outputs,
+        rule_descriptor = rule_descriptor,
+        label_name = label.name,
     )
 
     # The processor outputs has all the extra outputs like dSYM files that we want to propagate, but
