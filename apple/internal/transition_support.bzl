@@ -25,11 +25,16 @@ def _cpu_string(platform_type, settings):
         cpu_value = settings["//command_line_option:cpu"]
         if cpu_value.startswith("ios_"):
             return cpu_value
+        if cpu_value == "darwin_arm64":
+            return "ios_sim_arm64"
         return "ios_x86_64"
     if platform_type == "macos":
         macos_cpus = settings["//command_line_option:macos_cpus"]
         if macos_cpus:
             return "darwin_{}".format(macos_cpus[0])
+        cpu_value = settings["//command_line_option:cpu"]
+        if cpu_value.startswith("darwin_"):
+            return cpu_value
         return "darwin_x86_64"
     if platform_type == "tvos":
         tvos_cpus = settings["//command_line_option:tvos_cpus"]
