@@ -121,8 +121,10 @@ def _actool_args_for_special_file_types(
             [appicon_extension],
             attr = "app_icons",
         ).keys()
-        if len(icon_dirs) != 1:
-            formatted_dirs = "[\n  %s\n]" % ",\n  ".join(icon_dirs)
+        filtered_icon_files = [f for f in icon_files if "_AltIcon" not in f.path]
+
+        if len(filtered_icon_files) != 1:
+            formatted_dirs = "[\n  %s\n]" % ",\n  ".join(filtered_icon_files)
             fail("The asset catalogs should contain exactly one directory named " +
                  "*.%s among its asset catalogs, " % appicon_extension +
                  "but found the following: " + formatted_dirs, "app_icons")
